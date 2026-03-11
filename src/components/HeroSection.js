@@ -6,12 +6,7 @@ function HeroSection() {
     <Card className="text-start HeroSectionCard">
       <Card.Body>
         <Card.Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-          it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, 
-          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum 
-          passages, 
-          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          The story of the season isn't just told on the main stage; it’s written in the stats. Oracle Lens is your definitive archive for competitive league data. Dive deep into the post-match numbers to analyze past performances, compare historical team stats side-by-side, and see exactly how the top rosters stack up against each other. By breaking down past match data, tracking active player rosters, and keeping an eye on the upcoming schedule, you have everything you need to understand the meta and predict the next champions.
         </Card.Text>
       </Card.Body>
       
