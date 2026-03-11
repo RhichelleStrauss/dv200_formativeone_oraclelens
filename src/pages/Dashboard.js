@@ -1,5 +1,5 @@
 function Dashboard() {
-  return <h2>Contact Page</h2>;
+  return <h2>Welcome to Oracle lens!</h2>;
 }
 
 export default Dashboard;

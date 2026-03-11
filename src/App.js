@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import ColorBends from './components/ColorBends'; 
+import GrainientBackground from './components/GrainientBackground';
 import './App.css';
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import Comparison from './pages/Comparison'
 import Timeline from './pages/Timeline'
 
 import NavSidebar from './components/NavSidebar'
+
 
 function App() {
   return (
@@ -51,6 +53,8 @@ function App() {
     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 999, display: 'flex' }}></div>
 <NavSidebar />
     </div>
+    
+    
     
   );
 }
