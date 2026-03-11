@@ -1,5 +1,5 @@
 function Timeline() {
-  return <h2>Contact Page</h2>;
+  return <h2>timeline Page</h2>;
 }
 
 export default Timeline;

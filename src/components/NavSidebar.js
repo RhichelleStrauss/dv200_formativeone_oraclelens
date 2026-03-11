@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Link } from 'react-router-dom';
 
 //specific MUI icons import
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
@@ -20,6 +21,7 @@ import SpotlightEffect from './SpotlightEffect';
 import GrainientBackground from './GrainientBackground';
 
 import myLogo from '../images/logo maybe@8x-8.png'; 
+import { Path } from 'ogl';
 
 const theme = createTheme ({
   typography: {
@@ -106,9 +108,9 @@ export default function MiniDrawer() {
   };
 
   const menuItems = [
-    { text: 'Dashboard', icon: <DashboardIcon/> },
-    { text: 'Comparison', icon: <CompareArrowsIcon/> },
-    { text: 'Timeline', icon: <TimelineIcon/> }
+    { text: 'Dashboard', icon: <DashboardIcon/>, Path: '/' },
+    { text: 'Comparison', icon: <CompareArrowsIcon/>, Path: '/Comparison' },
+    { text: 'Timeline', icon: <TimelineIcon/>, Path: '/Timeline' }
   ];
 
   return (
@@ -182,6 +184,8 @@ export default function MiniDrawer() {
             }}
           >
           <ListItemButton
+          component={Link}
+          to={item.Path}
             sx={{
               minHeight: 48,
               justifyContent: open ? 'initial' : 'center',

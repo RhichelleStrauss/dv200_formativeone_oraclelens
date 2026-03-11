@@ -1,5 +1,5 @@
 function Comparison() {
-  return <h2>Contact Page</h2>;
+  return <h2>Compare Page</h2>;
 }
 
 export default Comparison;
