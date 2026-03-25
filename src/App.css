@@ -41,3 +41,12 @@ body{
   background-color: #0F0A1F !important;
   margin: 0;
 }
+
+.comparePageHead{
+  font-family: "beaufort-pro", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #04D9D9;
+    font-size: 44px;
+    text-transform: uppercase;
+}

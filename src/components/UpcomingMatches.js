@@ -4,7 +4,7 @@ import axios from "axios";
 
 import SpotlightEffect from "./SpotlightEffect";
 import '../css/UpcomingMatches.css';
-import {Form, Spinner} from 'react-bootstrap';
+import {Form, Spinner, Modal, Button} from 'react-bootstrap';
 
 //env hidden token
 //environment var manage my secrets aka API key
@@ -23,7 +23,14 @@ function UpcomingMatches() {
     const [matches, setMatches] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
+    const [showModal, setShowModal] = useState(false);
+    const [clickedTeam, setClickedTeam] = useState(null);
     
+    const handleTeamClick = (team) => {
+    setClickedTeam(team);
+    setShowModal(true);
+  };
 
 
    // ᓚᘏᗢ mind dump from class notes
@@ -32,7 +39,7 @@ function UpcomingMatches() {
    //1st arg - function that contains code needing to run (below case is the fetching of API)
    //2nd arg - dependency lsit, vars we need to lsiten to, if changed needs to re render.
  useEffect(() => {
-        axios.get('https://api.pandascore.co/lol/leagues?per_page=20', {
+        axios.get('https://api.pandascore.co/lol/leagues?per_page=100', {
             headers: { Authorization: `Bearer ${PANDASCORE_TOKEN}` }
         })
 
@@ -50,7 +57,7 @@ function UpcomingMatches() {
 
     setLoading(true);
 
-    axios.get(`https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=${selectedLeague}&sort=begin_at&per_page=5`, {
+    axios.get(`https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=${selectedLeague}&sort=begin_at&per_page=10`, {
         headers: {Authorization: `Bearer ${PANDASCORE_TOKEN}`}
     })
     .then(response => {
@@ -63,9 +70,11 @@ function UpcomingMatches() {
     });
  }, [selectedLeague]);
 
+const activeLeagueInfo = leagues.find(league => league.id.toString() === selectedLeague.toString());
+
  return(
 
-    <div className="matchContainer w-100 mt-5">
+  <div className="matchContainer w-100 mt-5">
 
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
         <Form.Select 
@@ -80,6 +89,10 @@ function UpcomingMatches() {
             </option>
           ))}
         </Form.Select>
+
+        
+        
+
 
         </div>
 
@@ -116,6 +129,7 @@ function UpcomingMatches() {
                 </div>
 
                 <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center flex-grow-1 my-3 my-lg-0 gap-3">
+                 {/* team1 */}
                   <div className="teamInfo d-flex flex-row-reverse flex-sm-row align-items-center gap-2">
                     <span className="text-white">{team1.name}</span>
                     {team1.image_url && <img src={team1.image_url} alt={team1.name} className="teamLogo" />}
@@ -123,6 +137,7 @@ function UpcomingMatches() {
                   
                   <div className="vsText mx-2 mx-sm-4">V.S</div>
                   
+                  {/* team2 */}
                   <div className="teamInfo d-flex align-items-center gap-2">
                     {team2.image_url && <img src={team2.image_url} alt={team2.name} className="teamLogo" />}
                     <span className="text-white">{team2.name}</span>
