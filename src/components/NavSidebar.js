@@ -20,7 +20,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import SpotlightEffect from './SpotlightEffect'; 
 import GrainientBackground from './GrainientBackground';
 
-import myLogo from '../images/logo maybe@8x-8.png'; 
+import myLogo from '../images/oraclelens_logo@8x-8.png'; 
 import { Path } from 'ogl';
 
 const theme = createTheme ({
@@ -129,9 +129,9 @@ export default function MiniDrawer() {
 
 
             <GrainientBackground
-              color1="#69021e"
-    color2="#b20636"
-    color3="#680320"
+             color1="#b20636"
+    color2="#69021e"
+    color3="#69021e"
     timeSpeed={0}
     colorBalance={-0.38}
     warpStrength={1.5}
@@ -168,7 +168,7 @@ export default function MiniDrawer() {
           />
         </DrawerHeader>
         
-        <Divider sx={{ borderColor: 'rgba(242, 7, 117, 0.55)' }} />
+        <Divider sx={{ borderColor: 'rgba(219, 30, 81, 0.55)' }} />
         
         <List>
 
@@ -176,7 +176,7 @@ export default function MiniDrawer() {
             <ListItem key={item.text} disablePadding sx={{ display: 'block', mb: 3, mx: 'auto', width: '85%', mt: 3 }}>
 
           <SpotlightEffect 
-            spotlightColor="rgba(242, 7, 117, 0.67)" 
+            spotlightColor="rgba(255, 132, 187, 0.79)" 
             style={{ 
               padding: 0, 
               border: 'none', 
@@ -188,8 +188,10 @@ export default function MiniDrawer() {
           to={item.Path}
             sx={{
               minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 2.5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: open ? 'flex-start' : 'center',
+              px: open ? 2 : 0,
               backgroundColor: 'transparent', 
               '&:hover': { backgroundColor: 'transparent' } 
             }}
@@ -198,21 +200,26 @@ export default function MiniDrawer() {
           <ListItemIcon
             sx={{
               minWidth: 0,
-              mr: open ? 1 : 'auto',
+              mr: open ? 1 : 0,
               justifyContent: 'center',
-              color: '#BFCBC2'
+              alignItems: 'center',
+              color: '#F20775'
             }}
           >
             {item.icon}
           </ListItemIcon>
 
-          <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }}
+          <ListItemText primary={item.text} sx={{ 
+            opacity: open ? 1 : 0,
+            display: open ? 'block' : 'none',
+            m: 0
+          }}
 
           slotProps={{
             primary: {
             fontSize: '1.2rem', 
-            color: '#BFCBC2',   
-            fontWeight: 500,    
+            color: '#F20775',   
+            fontWeight: 600,    
             letterSpacing: '1px',
             textTransform: 'uppercase'
          }
