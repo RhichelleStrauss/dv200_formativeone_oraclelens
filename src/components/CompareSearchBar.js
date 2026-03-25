@@ -28,8 +28,9 @@ import '../css/CompareSearchBar.css';
 
 const CssTextField = styled(TextField)({
     '& label': {
-        color: '#fb9dc7',
-        fontFamily: '"beaufort-pro", serif',
+        color: '#fb9dc7bd',
+        fontFamily: '"helvetica-neue-lt-pro", sans-serif',
+        
     },
   '& label.Mui-focused': {
     color: '#fb9dc7',
@@ -79,7 +80,10 @@ export default function CompareSearchBar() {
           Team 1   
         </Typography>
         
-      <CssTextField label="Search Team" id="custom-css-outlined-input" />
+      <CssTextField label="Search Team" 
+      id="custom-css-outlined-input"
+      size="small"
+      sx={{ width: '300px'}} />
       
     </Box>
   );
