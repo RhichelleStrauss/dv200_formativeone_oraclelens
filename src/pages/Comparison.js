@@ -6,7 +6,7 @@ import TeamCard from '../components/TeamCard';
 import TeamRosterCard from '../components/TeamRosterCard';
 import React, { useState, useEffect } from "react";
 import  WinRateChart  from '../components/WinRateChart';
-import AverageGameDurationChart from '../components/AverageGameDurationChart';
+
 
 function Comparison() {
   const [team1Data, setTeam1Data] = useState(null);
@@ -29,7 +29,7 @@ function Comparison() {
         <TeamCard team={team1Data} />
             <TeamRosterCard team={team1Data} />
             <WinRateChart team={team1Data}/>
-            <AverageGameDurationChart team={team1Data}/>
+            
             
         </div>
         </Col>
@@ -44,7 +44,7 @@ function Comparison() {
         <div style={{width: '100%'}}>
         <TeamCard team={team2Data} />
             <TeamRosterCard team={team2Data} />
-            <WinRateChart team={team1Data}/>
+            <WinRateChart team={team2Data}/>
         </div>
         </Col>
         

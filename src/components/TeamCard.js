@@ -14,7 +14,7 @@ function TeamCard({ team }) {
   return (
       <Card className="shadow-lg" style={{ width: '100%', backgroundColor: '#0f0a1fd7', border: '1px solid #fb9dc7b2', borderRadius: '4px', marginTop: '60px', height: '180px' }}>
         <div className="text-white d-flex align-items-center justify-content-center h-100 opacity-50" style={{fontFamily: 'beaufort-pro'}}>
-          Search for a team to begin...
+          Team will only display when searched ‾◡◝
         </div>
       </Card>
     );
@@ -46,7 +46,7 @@ function TeamCard({ team }) {
             src={team.image_url || 'https://via.placeholder.com/100?text=No+Logo'}
             alt={`${team.name} Logo`}
             // placeholder
-            style={{ width: '100px', height: 'auto', objectFit: 'contain', borderRadius: '0.4rem' }}
+            style={{ width: '120px', height: '100px', objectFit: 'contain', borderRadius: '0.4rem', backgroundColor: '#ffffffc4' }}
           />
         </div>
       </div>
