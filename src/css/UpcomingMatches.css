@@ -9,6 +9,7 @@
 
   transition: all 0.3s ease;
   outline: none;
+ 
 }
 
 
@@ -21,6 +22,7 @@
 .leagueDropdown option {
   background-color: rgba(187, 4, 52, 0.656);
   color: white;
+  
 }
 
 

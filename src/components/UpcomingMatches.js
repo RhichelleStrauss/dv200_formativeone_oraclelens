@@ -8,7 +8,7 @@ import {Form, Spinner, Modal, Button} from 'react-bootstrap';
 
 //env hidden token
 //environment var manage my secrets aka API key
-//.env is not in src, and is put in .gitignore(i think, google & AI helped and i implemented)
+//.env is not in src, and is put in .gitignore(i think, google & AI helped(by explaining it to me like im stupid) and i implemented)
 //these comments are simply for my understanding otherwise i dont know whats going on :D
 const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 

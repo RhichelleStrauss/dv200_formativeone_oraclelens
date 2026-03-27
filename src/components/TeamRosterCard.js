@@ -1,59 +1,118 @@
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
 
-function TeamCard() {
+//env hidden token
+//environment var manage my secrets aka API key
+//.env is not in src, and is put in .gitignore(i think, google & AI helped(by explaining it to me like im stupid) and i implemented)
+//these comments are simply for my understanding otherwise i dont know whats going on :D
+const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
+
+function TeamRosterCard({ team }) {
+    if (!team || !team.players || team.players.length === 0) return null;
   
   return (
     <Card style={{
       width: '100%',
       backgroundColor: '#0f0a1fd7',
       border: '1px solid #fb9dc7b2',
-      borderRadius: '4px',
-      marginTop: '60px',
+      borderRadius: '8px',
+      marginTop: '20px',
       fontFamily: 'beaufort-pro'
     }}
       className="shadow-lg"
     >
-      <div className="d-flex justify-content-center"
-        style={{
-          marginTop: '-40px'
-        }}>
 
-        <div
-          style={{
-            padding: '10px 20px',
-            borderRadius: '4px'
-          }}
-        >
-          <img
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKugIg0EWQJTK_DmBNCnif3QypizNVBouG1Q&s'
-            // placeholder
-            style={{ width: '100px', height: 'auto', objectFit: 'contain', borderRadius: '4px' }}
-          />
+      <Card.Body className= "p-4" style={{marginBottom: '10px'}} >
+
+        <div style={{color: '#F20775', fontSize: '22px', marginBottom: '20px', fontFamily: "beaufort-pro" }}>
+            Team’s Current Roster:
         </div>
-      </div>
-
-
-      <Card.Body className= "p-2 pt-2" style={{marginBottom: '10px'}} >
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '120px 1fr',
-          gap: '10px',
-          fontSize: '16px'
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '6px 5px',
+          fontSize: '16px',
+          textAlign: 'center'
         }}>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Team Name: </div>
-          <div className='teamText'></div>
+          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", marginBottom: '20px' }}>Name: </div>
+          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Age: </div>
+          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Role: </div>
+          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Nation: </div>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Acronym: </div>
-          <div className='teamText'></div>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Region: </div>
-          <div className='teamText'></div>
+{team.players.map((player) => (
+            <React.Fragment key={player.id}>
+            
+              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+                {player.name}</div>
+            
+              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+                {player.age || 'N/A'}</div>
+              
+              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", textTransform: 'capitalize' }} >
+                {player.role}</div>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>League: </div>
-          <div className='teamText'></div>
 
+              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+                {player.nationality || 'N/A'}</div>
+
+                
+            </React.Fragment>
+          ))}
+
+
+{/*          
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.name}</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.age || 'N/A'}</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.role}</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.nationality || 'N/A'}</div>
+
+        
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
+
+         
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
+
+         
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
+
+          
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
+          <div className='playerDetail'
+          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div> */}
         
         </div>
       </Card.Body>
@@ -61,4 +120,4 @@ function TeamCard() {
   );
 }
 
-export default TeamCard;
+export default TeamRosterCard;
