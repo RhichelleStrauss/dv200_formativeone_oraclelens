@@ -73,7 +73,7 @@ function CompareSearchBar({ label, onTeamSelect }) {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTeam, setSearchTeam] = useState(''); // State is named searchTeam
+  const [searchTeam, setSearchTeam] = useState(''); 
 
   useEffect(() => {
     if (searchTeam === '') {

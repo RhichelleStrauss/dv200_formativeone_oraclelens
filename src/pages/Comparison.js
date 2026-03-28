@@ -6,11 +6,15 @@ import TeamCard from '../components/TeamCard';
 import TeamRosterCard from '../components/TeamRosterCard';
 import React, { useState, useEffect } from "react";
 import  WinRateChart  from '../components/WinRateChart';
+import PlaystyleProfileChart from '../components/PlaystyleProfileChart';
+import AverageGameDurationChart from '../components/AverageGameDurationChart';
+
 
 
 function Comparison() {
   const [team1Data, setTeam1Data] = useState(null);
   const [team2Data, setTeam2Data] = useState(null);
+  
   return (
     <Container>
       <h2 className="comparePageHead">Compare Teams in LOL esports</h2>
@@ -29,8 +33,8 @@ function Comparison() {
         <TeamCard team={team1Data} />
             <TeamRosterCard team={team1Data} />
             <WinRateChart team={team1Data}/>
-            
-            
+            <PlaystyleProfileChart team={team1Data} />
+        
         </div>
         </Col>
       
@@ -45,12 +49,17 @@ function Comparison() {
         <TeamCard team={team2Data} />
             <TeamRosterCard team={team2Data} />
             <WinRateChart team={team2Data}/>
+            <PlaystyleProfileChart team={team2Data} />
+           
         </div>
         </Col>
-        
-
+      
       </Row>
-     
+     <Row className="justify-content-center" style={{ marginTop: '40px', marginBottom: '60px' }}>
+        <Col xs={12} md={12} className="d-flex justify-content-center">
+          <AverageGameDurationChart team1={team1Data} team2={team2Data} />
+        </Col>
+      </Row>
       
     </Container>
   );

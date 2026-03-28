@@ -53,7 +53,8 @@ function TeamRosterCard({ team }) {
                 {player.age || 'N/A'}</div>
               
               <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", textTransform: 'capitalize' }} >
-                {player.role}</div>
+                
+                {player.role === 'Jun' ? 'Jgl' : player.role}</div>
 
 
               <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
