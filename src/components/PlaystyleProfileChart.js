@@ -169,7 +169,17 @@ export const PlaystyleProfileChart = ({ team }) => {
         const comebackRate = comebackLost > 0 ? Math.round((comebackWin / comebackLost) * 100) : 0;
         const silverScrapesWR = silverScrapesOppose > 0 ? Math.round((silverScrapesWin / silverScrapesOppose) * 100) : 0;
 
-        const recentMatches = Math.min(Math.round((matches.length / 30) * 100), 100);
+
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+        const recentMatchesList = matches.filter(match => {
+          if (!match.begin_at) return false;
+          const matchDate = new Date(match.begin_at);
+          return matchDate >= thirtyDaysAgo;
+        });
+
+        const recentMatches = Math.min(Math.round((recentMatchesList.length / 21) * 100), 100);
 
         setPlaystyleProfile(prev => ({
           ...prev,

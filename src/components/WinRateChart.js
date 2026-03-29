@@ -88,13 +88,15 @@ export function WinRateChart({team}) {
 
           
           const gradientWon = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradientWon.addColorStop(0, '#69021E');
-          gradientWon.addColorStop(1, '#CF043B');
+          gradientWon.addColorStop(0, '#0367A6');
+          gradientWon.addColorStop(1, '#012840');
 
          
           const gradientLost = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradientLost.addColorStop(0, '#0367A6');
-          gradientLost.addColorStop(1, '#012840');
+          
+
+          gradientLost.addColorStop(0, '#69021E');
+          gradientLost.addColorStop(1, '#CF043B');
 
           return context.dataIndex === 0 ? gradientWon : gradientLost;
         },
@@ -132,15 +134,16 @@ export function WinRateChart({team}) {
           Winrate
         </h4>
         
-        <div className="d-flex align-items-center gap-3" style={{ fontSize: '16px', color: '#69021E' }}>
+        <div className="d-flex align-items-center gap-3" style={{ fontSize: '16px', color: '#0367A6' }}>
           <div className="d-flex align-items-center gap-1">
             <span>{winStats.winPercent}% won</span>
-            <div style={{ width: '40px', height: '14px', backgroundColor: '#69021E' }}></div>
+            <div style={{ width: '40px', height: '14px', backgroundColor: '#0367A6' }}></div>
           </div>
           
-          <div className="d-flex align-items-center gap-1" style={{ color: '#0367A6' }}>
+      
+               <div className="d-flex align-items-center gap-1" style={{ color: '#69021E' }}>
             <span>{winStats.lossPercent}% lost</span>
-            <div style={{ width: '40px', height: '14px', backgroundColor: '#0367A6' }}></div>
+            <div style={{ width: '40px', height: '14px', backgroundColor: '#69021E' }}></div>
           </div>
         </div>
       </div>

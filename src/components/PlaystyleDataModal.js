@@ -57,7 +57,9 @@ function MyVerticallyCenteredModal(props) {
         </h4>
 
         <p>
-          Recent matches played
+          Recent matches played volume percent. This percent represents the rate of volume of matches played by the team
+          in the past 30 days. This is calculated using the LEC (european league) where they play for 7 weeks, with best of 3
+          format, 21 games maximum per team. This then means that the teams percent is the percentage of those maximum games possible.
         </p>
 
 

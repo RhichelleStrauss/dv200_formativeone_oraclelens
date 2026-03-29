@@ -5,8 +5,7 @@ import {
   CategoryScale,
   LineController,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Tooltip,
   Legend,
   Filler,
@@ -19,8 +18,7 @@ ChartJS.register(
   LineController,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Tooltip,
   Legend,
   Filler
@@ -179,7 +177,7 @@ export const AverageGameDurationChart = ({team1, team2}) => {
       <div style={{ position: 'relative', height: '300px', width: '100%' }}>
         <Chart 
           ref={chartRef} 
-          type='line' 
+          type='bar' 
           data={chartData} 
           options={{ 
             responsive: true, 
