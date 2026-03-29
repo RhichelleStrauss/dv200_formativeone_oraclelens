@@ -28,8 +28,10 @@ function UpcomingMatches() {
     const [clickedTeam, setClickedTeam] = useState(null);
     
     const handleTeamClick = (team) => {
-    setClickedTeam(team);
-    setShowModal(true);
+    if (team.name !== 'TBD') {
+      setClickedTeam(team);
+      setShowModal(true);
+    }
   };
 
 
@@ -130,18 +132,26 @@ const activeLeagueInfo = leagues.find(league => league.id.toString() === selecte
 
                 <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center flex-grow-1 my-3 my-lg-0 gap-3">
                  {/* team1 */}
-                  <div className="teamInfo d-flex flex-row-reverse flex-sm-row align-items-center gap-2">
+               <button 
+                    className="teamInfo d-flex flex-row-reverse flex-sm-row align-items-center gap-2 clickable-team"
+                    onClick={() => handleTeamClick(team1)}
+                    style={{ background: 'none', border: 'none', padding: 0 }}
+                  >
                     <span className="text-white">{team1.name}</span>
                     {team1.image_url && <img src={team1.image_url} alt={team1.name} className="teamLogo" />}
-                  </div>
+                  </button>
                   
                   <div className="vsText mx-2 mx-sm-4">V.S</div>
                   
                   {/* team2 */}
-                  <div className="teamInfo d-flex align-items-center gap-2">
+                  <button 
+                    className="teamInfo d-flex align-items-center gap-2 clickable-team"
+                    onClick={() => handleTeamClick(team2)}
+                    style={{ background: 'none', border: 'none', padding: 0 }}
+                  >
                     {team2.image_url && <img src={team2.image_url} alt={team2.name} className="teamLogo" />}
                     <span className="text-white">{team2.name}</span>
-                  </div>
+                  </button>
                 </div>
 
                 <div className="mt-3 mt-lg-0 text-center text-lg-end" style={{ minWidth: '150px' }}>
@@ -154,6 +164,51 @@ const activeLeagueInfo = leagues.find(league => league.id.toString() === selecte
           );
         })
       )}
+      <Modal 
+        show={showModal} 
+        onHide={() => setShowModal(false)} 
+        centered
+      
+      >
+        <Modal.Header closeButton style={{ borderBottom: '1px solid #fb9dc7b2' }}>
+          <Modal.Title style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+            Team Overview
+          </Modal.Title>
+        </Modal.Header>
+        
+        <Modal.Body className="text-center">
+          {clickedTeam?.image_url ? (
+            <img 
+              src={clickedTeam.image_url} 
+              alt={clickedTeam.name} 
+              style={{ width: '120px', marginBottom: '20px' }} 
+            />
+          ) : (
+            <div style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span>No Logo Available</span>
+            </div>
+          )}
+          
+          <h3 style={{ color: '#F20775', fontFamily: "beaufort-pro", textTransform: 'uppercase' }}>
+            {clickedTeam?.name} {clickedTeam?.acronym ? `(${clickedTeam.acronym})` : ''}
+          </h3>
+          
+          <div style={{ color: '#e2d9cb', marginTop: '15px' }}>
+            <p>Location: {clickedTeam?.location || 'Unknown'}</p>
+            <p>PandaScore Database ID: {clickedTeam?.id}</p>
+          </div>
+        </Modal.Body>
+
+        <Modal.Footer style={{ borderTop: '1px solid #fb9dc7b2' }}>
+          <Button 
+            variant="outline-light" 
+            onClick={() => setShowModal(false)}
+            style={{ borderColor: '#fb9dc7', color: '#fb9dc7' }}
+          >
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
  )
 }

@@ -8,3 +8,51 @@
     font-style: normal;
 }
 
+
+
+.hero-tabs-header,
+.hero-tabs-header .nav-tabs {
+  padding: 0 !important;
+  margin: 0 !important;
+  border-bottom: none !important;
+}
+
+
+.hero-tabs-header .active-tab {
+ 
+  background-color: rgba(105, 2, 29, 0.848)!important; 
+  color: #F8F4E3 !important;
+  text-transform: uppercase;
+  font-family: 'beaufort-pro', sans-serif;
+  
+  border: 1px solid #fb9dc79d !important;
+  
+
+  border-bottom-color: #03020680 !important; 
+  border-radius: 0.4rem 0.4rem 0 0 !important;
+  
+  
+  margin-bottom: -1px !important; 
+  position: relative;
+  z-index: 10 !important; 
+}
+
+
+.hero-content-body {
+ 
+background-color: #0f0a1fd7 !important;
+  border: 1px solid #fb9dc79d !important;
+  
+  
+  border-radius: 0 0.4rem 0.4rem 0.4rem !important; 
+  
+  position: relative;
+  z-index: 1 !important; 
+  margin-top: 0 !important;
+}
+
+.inactive-tab{
+      color: #F8F4E3 !important;
+  text-transform: uppercase;
+  font-family: 'beaufort-pro', sans-serif;
+}

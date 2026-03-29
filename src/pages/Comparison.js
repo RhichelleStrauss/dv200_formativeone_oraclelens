@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import  WinRateChart  from '../components/WinRateChart';
 import PlaystyleProfileChart from '../components/PlaystyleProfileChart';
 import AverageGameDurationChart from '../components/AverageGameDurationChart';
+import { ButtonGroup, Button } from 'react-bootstrap';
 
 
 
@@ -17,7 +18,7 @@ function Comparison() {
   
   return (
     <Container>
-      <h2 className="comparePageHead">Compare Teams in LOL esports</h2>
+      <h2 className="comparePageHead">Compare Teams/Players in LOL esports</h2>
 
 
       <Row className="compareLayout justify-content-center" style={{marginTop: '100px', gap: '40px'}}>

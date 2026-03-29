@@ -60,3 +60,26 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+.clickable-team {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    position: relative; 
+    z-index: 10;        
+}
+
+.clickable-team:hover {
+    transform: scale(1.1);
+}
+
+.clickable-team:hover span {
+    color: #730220 !important; 
+    font-family: 'beaufort-pro', sans-serif;
+    font-weight: 600;
+}
+
+matchCard{ 
+  position: relative; 
+    z-index: 5; 
+    pointer-events: auto;
+}

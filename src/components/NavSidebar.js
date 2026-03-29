@@ -20,7 +20,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import SpotlightEffect from './SpotlightEffect'; 
 import GrainientBackground from './GrainientBackground';
 
-import myLogo from '../images/oraclelens_logo@8x-8.png'; 
+import myLogo from '../images/OracleLens_logo@8x-8.png'; 
 import { Path } from 'ogl';
 
 const theme = createTheme ({
