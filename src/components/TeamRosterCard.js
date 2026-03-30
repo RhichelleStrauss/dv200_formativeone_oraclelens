@@ -74,56 +74,8 @@ function TeamRosterCard({ team }) {
           ))}
 
 
-{/*          
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.name}</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.age || 'N/A'}</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.role}</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>{player.nationality || 'N/A'}</div>
-
-        
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
-
          
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
-
-         
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div>
-
           
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Doran</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>21</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Top</div>
-          <div className='playerDetail'
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Korean</div> */}
-        
         </div>
       </Card.Body>
     </Card>

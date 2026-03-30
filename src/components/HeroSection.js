@@ -42,8 +42,26 @@ function HeroSection() {
           <Card.Text style={{ color: '#e2d9cb' }}>
             <strong style={{ color: '#F20775' }}>Detailed Overview</strong>
             <p>League of Legends Esports seems very daunting to those who both have never heard of it, nor play the game.
-              This will explain a bit more regarding LoL esports to make the website make more sense to novices.
+              This will explain a bit more regarding LoL esports to make the website make more sense to novices. LoL is a 5v5 battle
+              on Summoners Rift. The two teams are on different sides of the map(red side and blue side). The end goal is to destroy 
+              the enemys nexus, in their base. You work together as a team to get gold, level up, and take down objectives.
             </p>
+
+            <h3 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+              A series</h3>
+            <p>A series in LoL esports is a game, whether it be a best of 1, 3 or 5</p>
+
+            <h3 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+              How to get gold</h3>
+            <p>To make more gold/get gold you kill enemies, take down neutral objectives and cs (creeperscore) which in lane is taking down 
+              minions, or jungle camps if you're a jungler.
+            </p>
+
+            <h3 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+              Roles</h3>
+            <p>Each of the 5 players have a different role, and position on the map - each with their own skills needed.
+            </p>
+            
           </Card.Text>
         )}
         

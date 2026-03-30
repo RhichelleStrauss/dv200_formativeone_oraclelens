@@ -7,3 +7,15 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.timelineButton{
+border-color: rgb(219, 30, 81) !important; 
+  background-color: rgba(187, 4, 52, 0.656) !important; 
+  color: #F8F4E3 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.timelineButton:hover{
+  background-color: #f8f4e3d1 !important;
+  color: rgb(187, 4, 53) !important;
+}

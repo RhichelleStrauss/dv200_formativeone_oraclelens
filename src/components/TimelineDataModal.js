@@ -4,98 +4,114 @@ import React from 'react';
 import '../css/PlaystyleDataModal.css';
 
 function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal className='modalStyle'
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
+    return (
+        <Modal className='modalStyle'
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
 
-        <Modal.Title id="contained-modal-title-vcenter" 
-        style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
-          Explain Timeline data
-        </Modal.Title>
+                <Modal.Title id="contained-modal-title-vcenter"
+                    style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+                    Explain Timeline data
+                </Modal.Title>
 
-      </Modal.Header>
-      <Modal.Body>
-        <h4 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
-            Kills per minute
-        </h4>
+            </Modal.Header>
+            <Modal.Body>
+                <h4 style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>
+                    Kills per minute/KDA ratio
+                </h4>
 
-        <p>
-         The number of kills
-        </p>
+                <p>
+                    The number of kills divided by the length of game is equal to the kills per minute for the team.
+                    <br />KDA is kills, deaths
+                    assists and the ratio is calculated by adding kills and assists then dividing by deaths.
+                </p>
 
-         <h4 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Game 1 Winrate
-        </h4>
+                <h4 style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Dragon Control Rate (%)/total kilss
+                </h4>
 
-        <p>
-          The winrate of the team when they win the entire series after winning the first game in the series.
-        </p>
+                <p>
+                    The teams dragon control rate adds the team selecteds number of dragons to the enemys, then calculating what percentage team 1
+                    got.
+                    <br />
+                    The total kills by 1 player across 20 games, in each game.
+                </p>
 
-         <h4 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Comeback Rate
-        </h4>
+                <h4 style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Gold Diff Per Minute (k)/CreepScore
+                </h4>
 
-        <p>
-          The winrate of the team when they win the entire series after losing the first game in the series.
-          (making a comeback after losing)
-        </p>
-
-
-         <h4 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>SilverScrapes Winrate
-        </h4>
-
-        <p>
-          SilverScrapes is a league esports term for when a series reaches the tie-breaker game. SilverScrapes
-          winrate is the winrate of the team, after reaching silverscrapes and winning the series 
-        </p>
-
-         <h4 style={{color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Recent matches volume
-        </h4>
-
-        <p>
-          Recent matches played volume percent. This percent represents the rate of volume of matches played by the team
-          in the past 30 days. This is calculated using the LEC (european league) where they play for 7 weeks, with best of 3
-          format, 21 games maximum per team. This then means that the teams percent is the percentage of those maximum games possible.
-        </p>
+                <p>
+                    Teams gold diff adds team and enemy gold together, then subtracts the enemy to find the difference, which then is divided by 1000.
+                    <br />
+                    CreepScore is what players get when killing minions, the higher the CS the better, and the more money.
+                </p>
 
 
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
+                <h4 style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Tower Difference/Gold Earned
+                </h4>
+
+                <p>
+                    The towers in each lane between enemy and team are added, then enemy team gets subtracted to find the difference.
+                    <br />
+                    The gold earned by a single player across 20 games.
+                </p>
+
+                <h4 style={{ color: '#F20775', fontSize: '22px', fontFamily: "beaufort-pro" }}>Side Performance (Blue +1, Red -1)/Total Damage to champions
+                </h4>
+
+                <p>
+                    The Side performance of the team, in LoL it is said red side is more difficult to win on so this sees if they're dominant on which side
+                    <br />
+                    win on blue = +1, win on red = +0.5
+                    <br />
+                    lose on blue = -1, lose on red = -0.5
+                    <br />
+                    The total damage a player did to the enemy team across 20 games.
+                </p>
+
+
+            </Modal.Body>
+            <Modal.Footer>
+                <Button className='timelineButton' onClick={props.onHide}
+                
+                >Close
+                </Button>
+
+
+            </Modal.Footer>
+        </Modal>
+    );
 }
 
 function TimelineDataModal() {
-  const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(false);
 
-  return (
+    return (
 
-    <>
-     <p className='playstyleDataModal'
-          onClick={() => setModalShow(true)} 
-          style={{ 
-            color: '#0367A6', 
-            paddingBottom: '2px', 
-            marginBottom: '15px',
-            cursor: 'pointer', 
-            textDecoration: 'underline' 
-          }}
-        >
-          ? explain data
-        </p>
+        <>
+            <p className='playstyleDataModal'
+                onClick={() => setModalShow(true)}
+                style={{
+                    color: '#0367A6',
+                    paddingBottom: '2px',
+                    marginBottom: '15px',
+                    cursor: 'pointer',
+                    textDecoration: 'underline'
+                }}
+            >
+                ? explain data
+            </p>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        dialogClassName="custom-modal-width"
-      />
-    </>
-  );
+            <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                dialogClassName="custom-modal-width"
+            />
+        </>
+    );
 }
 
 export default TimelineDataModal;

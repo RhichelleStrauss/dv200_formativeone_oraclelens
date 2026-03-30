@@ -1,6 +1,3 @@
-
-
-
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -16,7 +13,7 @@ const CssTextField = styled(TextField)({
   '& .MuiInputBase-input': { color: '#E2D9CB' },
   '& .MuiInput-underline:after': { borderBottomColor: '#fb9dc7' },
   '& .MuiOutlinedInput-root': {
-    backgroundColor: '#0f0a1fd7', 
+    backgroundColor: '#0f0a1fd7',
     '& fieldset': { borderColor: '#fb9dc7' },
     '&:hover fieldset': { borderColor: '#fb9dc7' },
     '&.Mui-focused fieldset': { borderColor: '#fb9dc7' },
@@ -24,10 +21,11 @@ const CssTextField = styled(TextField)({
 });
 
 function LeaguepediaSearchBar({ label, onTeamSelect, searchMode = 'team' }) {
+
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTeam, setSearchTeam] = useState(''); 
+  const [searchTeam, setSearchTeam] = useState('');
 
   useEffect(() => {
     setSearchTeam('');
@@ -40,74 +38,90 @@ function LeaguepediaSearchBar({ label, onTeamSelect, searchMode = 'team' }) {
       return;
     }
 
-   
+    //if the user is searching for the player, nothing returns if theyve typed in less than 3 letters,
+    //only once 3 letters are typed, autocomplete/options will now return
+    //my api HATED searching players and would die without this
     if (searchMode === 'player' && searchTeam.length < 3) {
       setOptions([]);
       return;
     }
-    
+
     setLoading(true);
-    
+
+    //debounce 500ms - search waits 500ms before searching
     const timeout = setTimeout(() => {
-      // 1. Define the dynamic variables
+
+      //ᓚᘏᗢ mind dump
+      //dynamica tables - searching team or player
+      //ID - column of database
+      //LIKE (SQL) search operator for partial matches 
+      // % - any character can go here, used alongside like
+      // %team% anything before team name and anything after is searched, for example sk t1 and t1 and t1 challengers will all apppear if t1 is searched
       const targetTable = searchMode === 'player' ? 'Players' : 'Teams';
       const targetFields = searchMode === 'player' ? 'ID, Team' : 'Name, Short';
-      const targetWhere = searchMode === 'player' 
+      const targetWhere = searchMode === 'player'
         ? `ID LIKE '%${searchTeam}%'`
         : `LOWER(Name) LIKE LOWER('%${searchTeam}%') OR LOWER(Short) LIKE LOWER('%${searchTeam}%')`;
 
-      
+
+      //lower(name) - converts teams to lowercase
+      //lower(searchteam) - converts typed search into lowercase
+      //lower(short), database has a col named short holding acronyms
+      //when searching for team, its no longer case senstive, you can search lowercase, or uppercase, or using acronym
+
       axios.get(`http://localhost:5000/api/cargo`, {
         params: {
           format: 'json',
-          tables: targetTable, 
-          fields: targetFields, 
+          tables: targetTable,
+          fields: targetFields,
           where: targetWhere,
           limit: 15
         }
       })
-      .then(response => {
-        if (response.data.error) {
-          console.error("Leaguepedia API complained:", response.data.error.info);
-          setLoading(false);
-          return;
-        }
 
-        const cargoData = response.data.cargoquery || [];
-        
-        const results = cargoData.map(item => {
-          if (searchMode === 'player') {
-            return {
-              name: item.title.ID || item.title.id,
-              short: item.title.Team || item.title.team, 
-              id: item.title.ID || item.title.id 
-            };
-          } else {
-            return {
-              name: item.title.Name || item.title.name,
-              short: item.title.Short || item.title.short,
-              id: item.title.Name || item.title.name 
-            };
+      
+        .then(response => {
+          if (response.data.error) {
+            console.error("error api wants to die", response.data.error.info);
+            setLoading(false);
+            return;
           }
-        });
-        
-        const validResults = results.filter(res => res.name);
-        const uniqueResults = Array.from(new Set(validResults.map(a => a.name)))
-          .map(name => validResults.find(a => a.name === name));
 
-        setOptions(uniqueResults);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Leaguepedia Search Error:", err);
-        setLoading(false);
-      });
-    }, 500); 
+          const cargoData = response.data.cargoquery || [];
+
+          const results = cargoData.map(item => {
+            if (searchMode === 'player') {
+              return {
+                name: item.title.ID || item.title.id,
+                short: item.title.Team || item.title.team,
+                id: item.title.ID || item.title.id
+              };
+            } else {
+              return {
+                name: item.title.Name || item.title.name,
+                short: item.title.Short || item.title.short,
+                id: item.title.Name || item.title.name
+              };
+            }
+          });
+
+          const validResults = results.filter(res => res.name);
+          const uniqueResults = Array.from(new Set(validResults.map(a => a.name)))
+            .map(name => validResults.find(a => a.name === name));
+
+          setOptions(uniqueResults);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Search Error:", err);
+          setLoading(false);
+        });
+    }, 500); //debounce 500ms
 
     return () => clearTimeout(timeout);
   }, [searchTeam, searchMode]);
-    
-  return(
+
+  return (
     <div className="d-flex align-items-center">
       <Typography sx={{ margin: 0, fontFamily: 'beaufort-pro', color: '#04D9D9', fontSize: '1.1rem', marginRight: '10px' }}>
         {label}
@@ -127,56 +141,56 @@ function LeaguepediaSearchBar({ label, onTeamSelect, searchMode = 'team' }) {
           }
         }}
 
-         componentsProps={{
-                  paper: {
-                    sx: {
-                      backgroundColor: '#0f0a1fd7',
-                      border: '1px solid #fb9dc7b2',
-                      borderTop: 'none',
-                      borderRadius: '0 0 8px 8px',
-                      backdropFilter: 'blur(10px)',
-                      boxShadow: '0px 8px 16px rgba(242, 7, 117, 0.15)',
-                      margin: 0,
-                      color: '#E2D9CB',
-                    }
-                  }
-                }}
-        
-                ListboxProps={{
-                  sx: {
-                    padding: 0,
-                    '& .MuiAutocomplete-option': {
-                      fontFamily: 'beaufort-pro',
-                      fontSize: '16px',
-                      borderBottom: '1px solid rgba(251, 157, 199, 0.2)',
-                      transition: 'all 0.2s ease-in-out',
-                      padding: '12px 15px',
-                      color: '#E2D9CB !important'
-                    },
-                    '& .MuiAutocomplete-noOptions': {
-                      color: '#E2D9CB !important',
-                      fontFamily: 'beaufort-pro',
-                      },
-        
-                    '& .MuiAutocomplete-option:last-child': {
-                      borderBottom: 'none',
-        
-                    },
-                    '& .MuiAutocomplete-option:hover, & .MuiAutocomplete-option[aria-selected="true"]': {
-                      backgroundColor: 'rgba(4, 217, 217, 0.15) !important',
-                      color: '#04D9D9 !important',
-                      paddingLeft: '24px',
-                      }
-                  }
-                }}
-                
+        componentsProps={{
+          paper: {
+            sx: {
+              backgroundColor: '#0f0a1fd7',
+              border: '1px solid #fb9dc7b2',
+              borderTop: 'none',
+              borderRadius: '0 0 8px 8px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0px 8px 16px rgba(242, 7, 117, 0.15)',
+              margin: 0,
+              color: '#E2D9CB',
+            }
+          }
+        }}
+
+        ListboxProps={{
+          sx: {
+            padding: 0,
+            '& .MuiAutocomplete-option': {
+              fontFamily: 'beaufort-pro',
+              fontSize: '16px',
+              borderBottom: '1px solid rgba(251, 157, 199, 0.2)',
+              transition: 'all 0.2s ease-in-out',
+              padding: '12px 15px',
+              color: '#E2D9CB !important'
+            },
+            '& .MuiAutocomplete-noOptions': {
+              color: '#E2D9CB !important',
+              fontFamily: 'beaufort-pro',
+            },
+
+            '& .MuiAutocomplete-option:last-child': {
+              borderBottom: 'none',
+
+            },
+            '& .MuiAutocomplete-option:hover, & .MuiAutocomplete-option[aria-selected="true"]': {
+              backgroundColor: 'rgba(4, 217, 217, 0.15) !important',
+              color: '#04D9D9 !important',
+              paddingLeft: '24px',
+            }
+          }
+        }}
+
         onInputChange={(event, newInputValue) => setSearchTeam(newInputValue)}
         renderInput={(params) => (
-          <CssTextField 
-            {...params} 
-            label={searchMode === 'player' ? "Search Player" : "Search Team"} 
+          <CssTextField
+            {...params}
+            label={searchMode === 'player' ? "Search Player" : "Search Team"}
             size="small"
-            sx={{ width: '280px' }} 
+            sx={{ width: '280px' }}
             InputProps={{
               ...params.InputProps,
               endAdornment: (
@@ -185,8 +199,8 @@ function LeaguepediaSearchBar({ label, onTeamSelect, searchMode = 'team' }) {
                   {params.InputProps.endAdornment}
                 </React.Fragment>
               ),
-            }} 
-          /> 
+            }}
+          />
         )}
       />
     </div>
