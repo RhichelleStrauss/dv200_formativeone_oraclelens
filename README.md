@@ -93,22 +93,22 @@ npm start
 #### Dashboard page
 
 Allows a user to view a detailed overview, and overview of League of Legends esports. Also allows a user to choose from over 100 leagues and view the next 10 upcoming matches as well as the details on the matches. User can click on a team to view the team details and recent form(past 5 games).
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_Dashboard.jpg" alt="Header image" width="100%" height="auto">
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_Dashboard2.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_Dashboard.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_Dashboard2.jpg" alt="Header image" width="100%" height="auto">
 
 #### Compare Page
 
 User can compare 2 teams in LoL esports, where they can view team details (name, acronym, region & logo), as well as the teams current roster (name, role, age, nationality). You can view and compare the teams winrate, playstyle profile and recent game durations.
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_compare1.jpg" alt="Header image" width="100%" height="auto">
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_compare2.jpg" alt="Header image" width="100%" height="auto">
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_compare3.jpg" alt="Header image" width="100%" height="auto">
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_compare4.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_compare1.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_compare2.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_compare3.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_compare4.jpg" alt="Header image" width="100%" height="auto">
 
 #### Timeline Page
 
 User can toggle between Player and Team statistics over a 20 game period. User can search for team and player respectively and choose from 5 categories to view. 
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_timeline1.jpg" alt="Header image" width="100%" height="auto">
-<img src="../dv200_formativeone_oraclelens/src/images/Oracle_timeline2.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_timeline1.jpg" alt="Header image" width="100%" height="auto">
+<img src="/src/images/Oracle_timeline2.jpg" alt="Header image" width="100%" height="auto">
 
 ## FAQ
 
