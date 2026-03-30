@@ -76,7 +76,7 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button className='timelineButton' onClick={props.onHide}
-                
+
                 >Close
                 </Button>
 

@@ -1,21 +1,3 @@
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import '../css/CompareSearchBar.css';
-
-// export default function CompareSearchBar() {
-//   return (
-//     <Box
-//       component="form"
-//       sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-//       noValidate
-//       autoComplete="off"
-//     >
-//       <TextField className='searchBar' id="outlined-basic" label="Team 1" variant="outlined" />
-      
-//     </Box>
-    
-//   );
-// }
 import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
@@ -39,22 +21,22 @@ const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 
 
 const CssTextField = styled(TextField)({
-    '& label': {
-        color: '#e2d9cbd5',
-        fontFamily: '"helvetica-neue-lt-pro", sans-serif',
-        
-    },
+  '& label': {
+    color: '#e2d9cbd5',
+    fontFamily: '"helvetica-neue-lt-pro", sans-serif',
+
+  },
   '& label.Mui-focused': {
     color: '#fb9dc7',
   },
-  '& .MuiInputBase-input':{
+  '& .MuiInputBase-input': {
     color: '#E2D9CB',
   },
   '& .MuiInput-underline:after': {
     borderBottomColor: '#fb9dc7',
   },
   '& .MuiOutlinedInput-root': {
-    backgroundColor: '#0f0a1fd7', 
+    backgroundColor: '#0f0a1fd7',
 
     '& fieldset': {
       borderColor: '#fb9dc7',
@@ -65,7 +47,7 @@ const CssTextField = styled(TextField)({
     '&.Mui-focused fieldset': {
       borderColor: '#fb9dc7',
     },
-    
+
   },
 });
 
@@ -73,7 +55,7 @@ function CompareSearchBar({ label, onTeamSelect }) {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTeam, setSearchTeam] = useState(''); 
+  const [searchTeam, setSearchTeam] = useState('');
 
   useEffect(() => {
     if (searchTeam === '') {
@@ -85,30 +67,30 @@ function CompareSearchBar({ label, onTeamSelect }) {
 
     const timeout = setTimeout(() => {
       axios.get(`https://api.pandascore.co/lol/teams?search[name]=${searchTeam}&per_page=100`, {
-        headers: { Authorization: `Bearer ${PANDASCORE_TOKEN}`}
+        headers: { Authorization: `Bearer ${PANDASCORE_TOKEN}` }
       })
-      .then(response => {
-        setOptions(response.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("cannot get teams (っ °Д °;)っ", err);
-        setLoading(false);
-      });
+        .then(response => {
+          setOptions(response.data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("cannot get teams (っ °Д °;)っ", err);
+          setLoading(false);
+        });
     }, 500);
 
     return () => clearTimeout(timeout);
   }, [searchTeam]);
-    
-  return(
+
+  return (
     <div className="d-flex align-items-center">
       <Typography sx={{ margin: 0, fontFamily: 'beaufort-pro', color: '#04D9D9', fontSize: '1.1rem', marginRight: '10px' }}>
         {label}
       </Typography>
 
-     
+
       <Autocomplete
-      disablePortal
+        disablePortal
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
@@ -117,7 +99,7 @@ function CompareSearchBar({ label, onTeamSelect }) {
         options={options}
         loading={loading}
         onChange={(event, newValue) => onTeamSelect(newValue)}
-        
+
         componentsProps={{
           paper: {
             sx: {
@@ -147,7 +129,7 @@ function CompareSearchBar({ label, onTeamSelect }) {
             '& .MuiAutocomplete-noOptions': {
               color: '#E2D9CB !important',
               fontFamily: 'beaufort-pro',
-              },
+            },
 
             '& .MuiAutocomplete-option:last-child': {
               borderBottom: 'none',
@@ -157,17 +139,17 @@ function CompareSearchBar({ label, onTeamSelect }) {
               backgroundColor: 'rgba(4, 217, 217, 0.15) !important',
               color: '#04D9D9 !important',
               paddingLeft: '24px',
-              }
+            }
           }
         }}
-        
+
         onInputChange={(event, newInputValue) => setSearchTeam(newInputValue)}
         renderInput={(params) => (
-          <CssTextField 
-            {...params} 
-            label="Search Team" 
+          <CssTextField
+            {...params}
+            label="Search Team"
             size="small"
-            sx={{ width: '280px' }} 
+            sx={{ width: '280px' }}
             InputProps={{
               ...params.InputProps,
               endAdornment: (
@@ -176,44 +158,11 @@ function CompareSearchBar({ label, onTeamSelect }) {
                   {params.InputProps.endAdornment}
                 </React.Fragment>
               ),
-            }} 
-          /> 
+            }}
+          />
         )}
       />
     </div>
   )
 }
 export default CompareSearchBar;
-
-// export default function CompareSearchBar() {
-//   return (
-//     <Box
-//       component="form"
-//       noValidate
-//       sx={{ display: 'flex', 
-//         alignItems: 'center',
-        
-//         gap: 2 }}
-//     >
-//         <Typography
-//         className='searchBarTitle'
-//         sx={{
-//             margin: 0,
-//             fontFamily: 'beaufort-pro',
-//             lineHeight: 1,
-//             whiteSpace: 'nowrap'
-//         }}
-//         >
-//           Team 1   
-//         </Typography>
-        
-//       <CssTextField label="Search Team" 
-//       id="custom-css-outlined-input"
-//       size="small"
-//       sx={{ width: '300px'}} />
-      
-//     </Box>
-//   );
-// }
-
-

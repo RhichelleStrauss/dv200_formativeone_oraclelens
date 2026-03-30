@@ -58,8 +58,8 @@ function UpcomingMatches() {
 .then(response => {
     setLeagues(response.data);
     if (response.data.length > 0) setSelectedLeague(response.data.find(league => league.name === "LEC").id);;
-
 })
+
 .catch(err => console.error ("Unable to fetch leagues :(", err));
  }, []);
  //only run when page laods []

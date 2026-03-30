@@ -92,8 +92,8 @@ export const Timeline = () => {
     if (searchMode === 'player') {
       switch (selectedMetric) {
 
-        case 'kda': 
-        //kda - kills deaths assists
+        case 'kda':
+          //kda - kills deaths assists
           currentLabel = 'KDA Ratio';
           yAxisData = matchHistory.map(game => {
             const k = parseFloat(game.Kills || 0), a = parseFloat(game.Assists || 0), d = parseFloat(game.Deaths || 0);
@@ -162,8 +162,8 @@ export const Timeline = () => {
             return isOurT1(game) ? (t1 - t2) : (t2 - t1);
           });
           break;
-          //gold diff and tower diff just adds both these datas together, then subtracts enemy to find difference
-          
+        //gold diff and tower diff just adds both these datas together, then subtracts enemy to find difference
+
         case 'side':
           currentLabel = 'Side Performance (Blue +1, Red -1)';
           yAxisData = matchHistory.map(game => {
@@ -175,7 +175,7 @@ export const Timeline = () => {
           });
           //win on blue = +1, win on red = +0.5
           //lose on blue = -1, lose on red = -0.5
-          
+
           break;
         default: yAxisData = matchHistory.map(() => 0);
       }

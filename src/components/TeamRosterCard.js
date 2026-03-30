@@ -9,17 +9,17 @@ import React, { useState, useEffect } from "react";
 const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 
 function TeamRosterCard({ team }) {
-    if (!team || !team.players || team.players.length === 0) return null;
+  if (!team || !team.players || team.players.length === 0) return null;
 
-    const formatRole = (role) => {
+  const formatRole = (role) => {
     if (!role) return 'N/A';
     const cleanRole = role.toLowerCase();
     if (cleanRole === 'jun') return 'Jgl';
     if (cleanRole === 'sup') return 'Sup';
     if (cleanRole === 'adc') return 'ADC';
-    return cleanRole.charAt(0).toUpperCase() + cleanRole.slice(1); 
+    return cleanRole.charAt(0).toUpperCase() + cleanRole.slice(1);
   };
-  
+
   return (
     <Card style={{
       width: '100%',
@@ -32,10 +32,10 @@ function TeamRosterCard({ team }) {
       className="shadow-lg"
     >
 
-      <Card.Body className= "p-4" style={{marginBottom: '10px'}} >
+      <Card.Body className="p-4" style={{ marginBottom: '10px' }} >
 
-        <div style={{color: '#F20775', fontSize: '22px', marginBottom: '20px', fontFamily: "beaufort-pro" }}>
-            Team’s Current Roster:
+        <div style={{ color: '#F20775', fontSize: '22px', marginBottom: '20px', fontFamily: "beaufort-pro" }}>
+          Team’s Current Roster:
         </div>
 
         <div style={{
@@ -46,36 +46,36 @@ function TeamRosterCard({ team }) {
           textAlign: 'center'
         }}>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", marginBottom: '20px' }}>Name: </div>
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Age: </div>
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Role: </div>
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Nation: </div>
+          <div style={{ color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", marginBottom: '20px' }}>Name: </div>
+          <div style={{ color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Age: </div>
+          <div style={{ color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Role: </div>
+          <div style={{ color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>Nation: </div>
 
 
-{team.players.map((player) => (
+          {team.players.map((player) => (
             <React.Fragment key={player.id}>
-            
-              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+
+              <div style={{ color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
                 {player.name}</div>
-            
-              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+
+              <div style={{ color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
                 {player.age || 'N/A'}</div>
-              
-              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", textTransform: 'capitalize' }} >
-                
+
+              <div style={{ color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", textTransform: 'capitalize' }} >
+
                 {formatRole(player.role)}</div>
 
 
-              <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
+              <div style={{ color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
                 {player.nationality || 'N/A'}</div>
 
-                
+
             </React.Fragment>
           ))}
 
 
-         
-          
+
+
         </div>
       </Card.Body>
     </Card>
