@@ -87,6 +87,15 @@ export const options = {
 
 const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 
+
+function createGradient(ctx, area, colorStart, colorMid, colorEnd) {
+  const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
+  gradient.addColorStop(0, colorStart);
+  gradient.addColorStop(0.5, colorMid);
+  gradient.addColorStop(1, colorEnd);
+  return gradient;
+}
+
 export const PlaystyleProfileChart = ({ team }) => {
 
   const [modalShow, setModalShow] = useState(false);
@@ -94,13 +103,24 @@ export const PlaystyleProfileChart = ({ team }) => {
   const [radarLoading, setRadarLoading] = useState(false);
   const [playstyleProfile, setPlaystyleProfile] = useState({
 
-    labels: ['Sweep rate', 'Game1 winrate', 'Comeback rate', 'Silverscrapes winrate', 'recent matches'],
+    labels: ['Sweep rate', 'Game1 winrate', 'Comeback rate', 'Silverscrapes winrate', 'Recent Matches'],
     datasets: [
       {
         label: 'Team playstyle',
         data: [0, 0, 0, 0, 0],
-        backgroundColor: 'rgba(105, 2, 29, 0.66)',
-        borderColor: 'rgba(105, 2, 30, 0.72)',
+        borderColor: (context) => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) return '#04D9D9';
+          return createGradient(ctx, chartArea, '#04D9D9', '#BE5FD9', '#69021E');
+        },
+        backgroundColor: (context) => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) return 'rgba(4, 217, 217, 0.2)';
+          return createGradient(ctx, chartArea, 'rgba(4, 217, 217, 0.3)', 'rgba(190, 95, 217, 0.4)', 'rgba(105, 2, 29, 0.5)');
+        },
+       
         borderWidth: 1,
       },
     ],
@@ -138,29 +158,29 @@ export const PlaystyleProfileChart = ({ team }) => {
 
           const firstGame = match.games.find(g => g.position === 1);
 
-          if (firstGame && firstGame.winner_id) {
+          const firstGameWinnerId = firstGame?.winner?.id;
+
+          if (firstGame && firstGameWinnerId) {
             gameOnePlayed++;
-          }
 
-          if (firstGame.winner_id === team.id) {
-            gameOneWin++;
-          } else {
-            comebackLost++;
-            if (match.winner_id === team.id) {
-              comebackWin++;
-
+            if (firstGameWinnerId === team.id) {
+              gameOneWin++;
+              } else {
+                comebackLost++; 
+              if (match.winner_id === team.id) {
+                comebackWin++;
+                }
             }
           }
+
+         
           const gamesPlayedIn = match.games.filter(g => g.winner_id !== null).length;
-          if (gamesPlayedIn === match.number_of_games) {
+          if (gamesPlayedIn > 0 && gamesPlayedIn === match.number_of_games) {
             silverScrapesOppose++;
-
-
             if (match.winner_id === team.id) {
               silverScrapesWin++;
             }
           }
-
         });
 
         const sweepRate = sweepOppose > 0 ? Math.round((sweepTeam / sweepOppose) * 100) : 0;

@@ -108,6 +108,7 @@ function CompareSearchBar({ label, onTeamSelect }) {
 
      
       <Autocomplete
+      disablePortal
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
@@ -116,6 +117,49 @@ function CompareSearchBar({ label, onTeamSelect }) {
         options={options}
         loading={loading}
         onChange={(event, newValue) => onTeamSelect(newValue)}
+        
+        componentsProps={{
+          paper: {
+            sx: {
+              backgroundColor: '#0f0a1fd7',
+              border: '1px solid #fb9dc7b2',
+              borderTop: 'none',
+              borderRadius: '0 0 8px 8px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0px 8px 16px rgba(242, 7, 117, 0.15)',
+              margin: 0,
+              color: '#E2D9CB',
+            }
+          }
+        }}
+
+        ListboxProps={{
+          sx: {
+            padding: 0,
+            '& .MuiAutocomplete-option': {
+              fontFamily: 'beaufort-pro',
+              fontSize: '16px',
+              borderBottom: '1px solid rgba(251, 157, 199, 0.2)',
+              transition: 'all 0.2s ease-in-out',
+              padding: '12px 15px',
+              color: '#E2D9CB !important'
+            },
+            '& .MuiAutocomplete-noOptions': {
+              color: '#E2D9CB !important',
+              fontFamily: 'beaufort-pro',
+              },
+
+            '& .MuiAutocomplete-option:last-child': {
+              borderBottom: 'none',
+
+            },
+            '& .MuiAutocomplete-option:hover, & .MuiAutocomplete-option[aria-selected="true"]': {
+              backgroundColor: 'rgba(4, 217, 217, 0.15) !important',
+              color: '#04D9D9 !important',
+              paddingLeft: '24px',
+              }
+          }
+        }}
         
         onInputChange={(event, newInputValue) => setSearchTeam(newInputValue)}
         renderInput={(params) => (

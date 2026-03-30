@@ -8,8 +8,11 @@ import React, { useState, useEffect } from "react";
 //these comments are simply for my understanding otherwise i dont know whats going on :D
 const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 
+
+//insert team into card/function
 function TeamCard({ team }) {
 
+  //if theres no team currently selected only this appears signifying to the user the team will only appear when searched
  if (!team){
   return (
       <Card className="shadow-lg" style={{ width: '100%', backgroundColor: '#0f0a1fd7', border: '1px solid #fb9dc7b2', borderRadius: '4px', marginTop: '60px', height: '180px' }}>
@@ -19,7 +22,12 @@ function TeamCard({ team }) {
       </Card>
     );
   }
+
+  //checking if team returns
+  console.log(team);
   
+
+  //if team is searched itll return this card with the logo, team name and acronym and region of team 
   return (
     <Card style={{
       width: '100%',
@@ -45,7 +53,7 @@ function TeamCard({ team }) {
           <img
             src={team.image_url || 'https://via.placeholder.com/100?text=No+Logo'}
             alt={`${team.name} Logo`}
-            // placeholder
+            
             style={{ width: '120px', height: '100px', objectFit: 'contain', borderRadius: '0.4rem', backgroundColor: '#ffffffc4' }}
           />
         </div>
@@ -75,10 +83,6 @@ function TeamCard({ team }) {
           style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
             {team.location || 'Unknown'}</div>
 
-          <div style={{color: '#F20775', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>League: </div>
-          <div className='teamText' 
-          style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
-          </div>
 
         
         </div>

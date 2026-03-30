@@ -1,7 +1,7 @@
 
 .leagueDropdown {
   background-color: rgba(105, 2, 29, 0.848) !important; 
-  color: #ffffff !important;
+  color: #E2D9CB !important;
   border: 1px solid rgba(219, 30, 81, 0.3) !important; 
   padding: 10px 15px;
 
@@ -21,7 +21,7 @@
 
 .leagueDropdown option {
   background-color: rgba(187, 4, 52, 0.656);
-  color: white;
+  color: #E2D9CB;
   
 }
 
@@ -32,7 +32,7 @@
 }
 
 .matchContainer {
-  color: #fff;
+  color: #E2D9CB;
 }
 
 .teamInfo{
@@ -82,4 +82,16 @@ matchCard{
   position: relative; 
     z-index: 5; 
     pointer-events: auto;
+}
+
+.modalUpcomingButton:hover{
+  background-color: #f8f4e3d1 !important;
+  color: rgb(187, 4, 53) !important;
+}
+
+.modalUpcomingButton{
+  border-color: rgb(219, 30, 81) !important; 
+  background-color: rgba(187, 4, 52, 0.656) !important; 
+  color: #F8F4E3 !important;
+  transition: all 0.2s ease-in-out;
 }

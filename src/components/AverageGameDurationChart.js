@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import {
   Chart as ChartJS,
   CategoryScale,
-  LineController,
+  BarController,
   LinearScale,
   BarElement,
   Tooltip,
@@ -15,7 +15,7 @@ import axios from 'axios';
 import { faker } from '@faker-js/faker'; 
 
 ChartJS.register(
-  LineController,
+  BarController,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -29,7 +29,7 @@ const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 function createGradient(ctx, area, colorStart, colorMid, colorEnd) {
   const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
   gradient.addColorStop(0, colorStart);
-  gradient.addColorStop(0.5, colorMid);
+  gradient.addColorStop(0.3, colorMid);
   gradient.addColorStop(1, colorEnd);
   return gradient;
 }
@@ -54,19 +54,18 @@ export const AverageGameDurationChart = ({team1, team2}) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
           if (!chartArea) return '#04D9D9';
-          return createGradient(ctx, chartArea, '#04D9D9', '#BE5FD9', '#69021E');
+          return createGradient(ctx, chartArea, '#04D9D9', '#69021E','#BE5FD9' );
       },
         backgroundColor: (context) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
           if (!chartArea) return 'rgba(4, 217, 217, 0.2)'; 
-          return createGradient(ctx, chartArea, 'rgba(4, 217, 217, 0.1)', 'rgba(190, 95, 217, 0.3)', 'rgba(105, 2, 29, 0.5)');
+          return createGradient(ctx, chartArea, 'rgba(4, 217, 217, 0.1)', 'rgba(105, 2, 29, 0.3)', 'rgba(190, 95, 217, 0.5)');
         },
         fill: true,
         borderWidth: 3,
         tension: 0,
-        pointBackgroundColor: '#69021E',
-        pointBorderColor: '#69021E',
+       
         spanGaps: true,
   },
  {
@@ -76,13 +75,13 @@ export const AverageGameDurationChart = ({team1, team2}) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
           if (!chartArea) return '#0367A6'; 
-          return createGradient(ctx, chartArea, '#0367A6', '#F8F4E3', '#012840'); 
+          return createGradient(ctx, chartArea, '#0367A6', '#012840', '#F8F4E3'); 
         },
         backgroundColor: (context) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
           if (!chartArea) return 'rgba(3, 103, 166, 0.2)'; 
-          return createGradient(ctx, chartArea, 'rgba(3, 103, 166, 0.1)', 'rgba(248, 244, 227, 0.3)', 'rgba(0, 22, 41, 0.5)');
+          return createGradient(ctx, chartArea, 'rgba(3, 103, 166, 0.1)', 'rgba(0, 22, 41, 0.3)', 'rgba(248, 244, 227, 0.5)');
         },
         fill: true,
         borderWidth: 3,

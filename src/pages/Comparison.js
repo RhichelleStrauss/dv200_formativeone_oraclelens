@@ -18,7 +18,7 @@ function Comparison() {
   
   return (
     <Container>
-      <h2 className="comparePageHead">Compare Teams/Players in LOL esports</h2>
+      <h2 className="comparePageHead">Compare Teams in LOL esports</h2>
 
 
       <Row className="compareLayout justify-content-center" style={{marginTop: '100px', gap: '40px'}}>
@@ -32,11 +32,16 @@ function Comparison() {
 
         <div style={{width: '100%'}}>
         <TeamCard team={team1Data} />
+        </div>
+
+    {team1Data && (
+        <div style={{width: '100%'}}>
             <TeamRosterCard team={team1Data} />
             <WinRateChart team={team1Data}/>
             <PlaystyleProfileChart team={team1Data} />
         
         </div>
+    )}
         </Col>
       
         {/* setting up layout for 2 teams */}
@@ -48,19 +53,27 @@ function Comparison() {
 
         <div style={{width: '100%'}}>
         <TeamCard team={team2Data} />
+        </div>
+
+{team2Data && (
+        <div style={{width: '100%'}}>
             <TeamRosterCard team={team2Data} />
             <WinRateChart team={team2Data}/>
             <PlaystyleProfileChart team={team2Data} />
            
         </div>
+)}
         </Col>
       
       </Row>
+      
+      {team1Data && team2Data && (
      <Row className="justify-content-center" style={{ marginTop: '40px', marginBottom: '60px' }}>
         <Col xs={12} md={12} className="d-flex justify-content-center">
           <AverageGameDurationChart team1={team1Data} team2={team2Data} />
         </Col>
       </Row>
+      )}
       
     </Container>
   );

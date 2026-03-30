@@ -10,6 +10,15 @@ const PANDASCORE_TOKEN = process.env.REACT_APP_PANDASCORE_TOKEN;
 
 function TeamRosterCard({ team }) {
     if (!team || !team.players || team.players.length === 0) return null;
+
+    const formatRole = (role) => {
+    if (!role) return 'N/A';
+    const cleanRole = role.toLowerCase();
+    if (cleanRole === 'jun') return 'Jgl';
+    if (cleanRole === 'sup') return 'Sup';
+    if (cleanRole === 'adc') return 'ADC';
+    return cleanRole.charAt(0).toUpperCase() + cleanRole.slice(1); 
+  };
   
   return (
     <Card style={{
@@ -54,7 +63,7 @@ function TeamRosterCard({ team }) {
               
               <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro", textTransform: 'capitalize' }} >
                 
-                {player.role === 'Jun' ? 'Jgl' : player.role}</div>
+                {formatRole(player.role)}</div>
 
 
               <div style={{color: '#E2D9CB', fontWeight: '400', fontFamily: "helvetica-neue-lt-pro" }}>
