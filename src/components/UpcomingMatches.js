@@ -57,7 +57,7 @@ function UpcomingMatches() {
 
 .then(response => {
     setLeagues(response.data);
-    if (response.data.length > 0) setSelectedLeague (response.data[0].id);
+    if (response.data.length > 0) setSelectedLeague(response.data.find(league => league.name === "LEC").id);;
 
 })
 .catch(err => console.error ("Unable to fetch leagues :(", err));
@@ -107,6 +107,14 @@ function UpcomingMatches() {
   }, [clickedTeam]);
 
  console.log(leagues);
+
+//  useEffect( () => {
+//   console.log("Setting League to LEC")
+//   setSelectedLeague(leagues.find(league => league.name === "LEC"));
+//  }, [leagues]);
+ useEffect(() => {
+  console.log(selectedLeague?.name);
+ }, [selectedLeague])
 
  return(
 
