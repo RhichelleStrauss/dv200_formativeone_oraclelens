@@ -1,5 +1,5 @@
 # Formative One: Oracle Lens 
-<img src="../src/images/OracleLensGithubBanner-01.png" alt="Header image" width="100%" height="auto">
+<img src="/src/images/OracleLensGithubBanner-01.png" alt="Header image" width="100%" height="auto">
 
 # About Oracle Lens
 Oracle Lens is a Single Page React Application that visualizes data from the game League of Legends's esports. The esports community within League of Legends has a lot of data surrounding professional games. The application shows you the 10 upcomning matches for any league of your choosing, you can compare teams, and analyse a timeline for both teams and players.
