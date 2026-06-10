@@ -5,23 +5,23 @@
 Oracle Lens is a Single Page React Application that visualizes data from the game League of Legends's esports. The esports community within League of Legends has a lot of data surrounding professional games. The application shows you the 10 upcomning matches for any league of your choosing, you can compare teams, and analyse a timeline for both teams and players.
 
 # Built With
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React](https://img.shields.io/badge/React-F20775?style=for-the-badge&logo=react&logoColor=030206)
 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![JavaScript](https://img.shields.io/badge/JavaScript-F20775?style=for-the-badge&logo=javascript&logoColor=030206)
 
-![React Bootstrap](https://img.shields.io/badge/React_Bootstrap-7952B3?style=for-the-badge&logo=react-bootstrap&logoColor=white)
+![React Bootstrap](https://img.shields.io/badge/React_Bootstrap-F20775?style=for-the-badge&logo=react-bootstrap&logoColor=030206)
 
-![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-F20775?style=for-the-badge&logo=chart.js&logoColor=030206)
 
-![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F20775?style=for-the-badge&logo=figma&logoColor=030206)
 
-![React Bits](https://img.shields.io/badge/React_Bits-04D9D9?style=for-the-badge&logo=react&logoColor=black)
+![React Bits](https://img.shields.io/badge/React_Bits-F20775?style=for-the-badge&logo=react&logoColor=030206)
 
-![MaterialUI](https://img.shields.io/badge/Material%20UI-%23FFFFFF?style=for-the-badge&logo=MUI&logoColor=#007FFF)
+![Material_UI](https://img.shields.io/badge/Material_UI-F20775?style=for-the-badge&logo=mui&logoColor=030206)
 
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-F20775?style=for-the-badge&logo=css3&logoColor=030206)
 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-F20775?style=for-the-badge&logo=node.js&logoColor=030206)
 
 # Table of Contents
 - [Deployment](#deployment)
